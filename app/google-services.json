@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "54143160794",
+    "project_id": "msa-communication",
+    "storage_bucket": "msa-communication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54143160794:android:2871abaf2e21630f9770e3",
+        "android_client_info": {
+          "package_name": "com.msa2002.communication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54143160794-fdp6fj5a80551dchamj9q4672tgfk6cp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACGQZONADUS4GY5gnmjaaNXReqDvZNKqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54143160794-fdp6fj5a80551dchamj9q4672tgfk6cp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

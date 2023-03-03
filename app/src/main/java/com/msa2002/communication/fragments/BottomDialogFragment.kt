@@ -55,22 +55,21 @@ class BottomDialogFragment(var onContactListener: OnContactListener) : BottomShe
 
 
         binding.btnAdd.setOnClickListener {
-            val newName = binding.etName.text.toString()
-            val newMobile = binding.etMobile.text.toString()
-            val newAddress = binding.etAddress.text.toString()
+            val name = binding.etName.text.toString().trim()
+            val mobile = binding.etMobile.text.toString().trim()
+            val address = binding.etAddress.text.toString().trim()
 
-            if (newName.trim().isEmpty() || newMobile.trim().isEmpty() || newAddress.trim().isEmpty()) {
+            if (name.isEmpty() || mobile.isEmpty() || address.isEmpty()) {
                 Toast.makeText(requireContext(), "Fill all fields !", Toast.LENGTH_SHORT).show()
             } else {
+                dialog.show()
                 if (Contact.type == "addContact") {
-                    dialog.show()
-                    val createdAt = SimpleDateFormat("yyyy/MM/dd - HH:mm:").format(Date())
-                    addContact(newName, newMobile, newAddress, createdAt, createdAt)
+                    val createdAt = SimpleDateFormat("yyyy/MM/dd - HH:mm:SS").format(Date())
+                    addContact(name, mobile, address, createdAt, createdAt)
                 } else if (Contact.type == "editContact") {
                     dialog.setTitle("Updating Contact")
-                    dialog.show()
-                    val lastUpdated = SimpleDateFormat("yyyy/MM/dd - HH:mm:").format(Date())
-                    updateContact(id, newName, newMobile, newAddress, lastUpdated)
+                    val lastUpdated = SimpleDateFormat("yyyy/MM/dd - HH:mm:SS").format(Date())
+                    updateContact(id, name, mobile, address, lastUpdated)
                 }
             }
         }

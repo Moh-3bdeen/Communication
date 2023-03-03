@@ -53,13 +53,13 @@ class MyContactsAdapter(var activity: Activity, var data: ArrayList<Contact>, va
             val bottomSheet = BottomDialogFragment(object : BottomDialogFragment.OnContactListener {
                 override fun addContact(contact: Contact) {}
 
-                // تعديل العنصر وتحيث الصفحة
+                // تعديل العنصر وتحديث الصفحة
                 override fun updateContact(contact: Contact, position: Int) {
                     data[position] = contact
                     notifyDataSetChanged()
                 }
             })
-            bottomSheet.setArguments(args)
+            bottomSheet.arguments = args
             bottomSheet.show((activity as MainActivity).supportFragmentManager, bottomSheet.tag)
         }
 
@@ -96,16 +96,15 @@ class MyContactsAdapter(var activity: Activity, var data: ArrayList<Contact>, va
             .delete()
             .addOnSuccessListener {
                 Toast.makeText(activity, "Contact has been deleted", Toast.LENGTH_SHORT).show()
+                // بمرر العنصر المحذوف للواجهة الرئيسية عشان يتم الفحص على عدد العناصر ولو كان اخر واحد يظهر الايقونة والنص المكتوب لا يوجد محتويات
                 dialog.dismiss()
-                data.remove(contact)
                 onContactListener.deleteContact(contact)
                 notifyDataSetChanged()
             }
 
             .addOnFailureListener { error ->
                 dialog.dismiss()
-                Toast.makeText(activity, "Delete failed.\n${error.message}", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(activity, "Delete failed.\n${error.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
